@@ -3,6 +3,9 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -16,4 +19,10 @@ public class Reservation {
 
     Date anneeUniversitaire;
     Boolean estValide;
+
+    @ManyToMany (mappedBy = "reservations")
+    private Set<Chambre> chambres = new HashSet<>();
+
+    @ManyToMany
+    private Set<Etudiant> etudiants = new HashSet<>();
 }

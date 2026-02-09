@@ -3,6 +3,9 @@ package tn.esprit.tpfoyer.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 @Getter
 @Setter
@@ -18,4 +21,10 @@ public class Chambre {
 
     @Enumerated(EnumType.STRING)
     TypeChambre typeC;
+
+    @ManyToOne
+    private Bloc bloc;
+
+    @ManyToMany()
+    private Set<Reservation> reservations = new HashSet<>();
 }

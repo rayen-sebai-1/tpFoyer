@@ -3,6 +3,9 @@ package tn.esprit.tpfoyer.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 @Getter
 @Setter
@@ -16,4 +19,10 @@ public class Foyer {
     long idFoyer;
     String nomFoyer;
     long capaciteFoyer;
+
+    @OneToOne(mappedBy = "foyer")
+    private Universite universite;
+
+    @OneToMany (mappedBy = "foyer")
+    private Set<Bloc> blocs = new HashSet<>();
 }

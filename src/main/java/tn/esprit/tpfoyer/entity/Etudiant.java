@@ -3,6 +3,8 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -20,4 +22,6 @@ public class Etudiant {
     long  cin;
     String ecole;
     Date dataNaissance;
+    @ManyToMany (mappedBy = "etudiants")
+    private Set<Reservation> reservations = new HashSet<>();
 }

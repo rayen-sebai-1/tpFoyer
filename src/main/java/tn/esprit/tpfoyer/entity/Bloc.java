@@ -3,6 +3,9 @@ package tn.esprit.tpfoyer.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 @Getter
 @Setter
@@ -16,4 +19,10 @@ public class Bloc {
     long idBloc;
     String nomBloc;
     long capaciteBloc;
+
+    @ManyToOne
+    private Foyer foyer;
+
+    @OneToMany(mappedBy = "bloc")
+    private Set <Chambre> chambres = new HashSet<>();
 }
