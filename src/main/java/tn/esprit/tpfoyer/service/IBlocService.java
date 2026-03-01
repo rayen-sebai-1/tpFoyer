@@ -11,6 +11,5 @@ public interface IBlocService {
 
     Bloc findBlocById(Long id);
 
-
     List<Bloc> getAllBlocs();
 }
