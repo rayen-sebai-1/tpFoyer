@@ -1,28 +1,28 @@
 package tn.esprit.tpfoyer.entity;
-
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+
 
 @Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
-
 public class Foyer {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    long idFoyer;
-    String nomFoyer;
-    long capaciteFoyer;
+    private Long idFoyer;
+    private String nomFoyer;
+    private Long capaciteFoyer;
 
-    @OneToOne(mappedBy = "foyer")
+    @OneToOne (mappedBy = "foyer")
     private Universite universite;
 
-    @OneToMany (mappedBy = "foyer")
-    private Set<Bloc> blocs = new HashSet<>();
+    @OneToMany(mappedBy = "foyer")
+    private Set<Bloc> blocs;
+
 }

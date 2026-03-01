@@ -2,26 +2,25 @@ package tn.esprit.tpfoyer.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
-
 public class Etudiant {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    long idEtudiant;
-    String nomEt;
-    String prenomEt;
-    long  cin;
-    String ecole;
-    Date dataNaissance;
-    @ManyToMany (mappedBy = "etudiants")
-    private Set<Reservation> reservations = new HashSet<>();
+    private Long idEtudiant;
+    private String nomEt;
+    private String prenomEt;
+    private Long cin;
+    private String ecole;
+    private Date dateNaissance;
+
+    @ManyToMany(mappedBy = "etudiantList")
+    private Set<Reservation> reservationList = new HashSet<>();
+
 }

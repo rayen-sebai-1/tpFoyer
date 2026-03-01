@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 import tn.esprit.tpfoyer.entity.Bloc;
 import tn.esprit.tpfoyer.repository.BlocRepository;
 
-
 import java.util.List;
 @Service
 @AllArgsConstructor
