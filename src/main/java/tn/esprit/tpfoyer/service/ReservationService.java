@@ -36,6 +36,6 @@ public class ReservationService implements IReservationService {
 
     @Override
     public List<Reservation> getAllReservations() {
-        return List.of();
+        return reservationRepository.findAll();
     }
 }
