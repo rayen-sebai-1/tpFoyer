@@ -49,15 +49,15 @@ public class FoyerService implements IFoyerService{
     public void assignBlocToFoyer(Long blocId, Long foyerId) {
         Bloc bloc = blocRepository.findById(blocId).get();
         Foyer foyer = foyerRepository.findById(foyerId).get();
-        foyer.getBlocs().add(bloc);
-        foyerRepository.save(foyer);
+        bloc.setFoyer(foyer);
+        blocRepository.save(bloc);
     }
 
 
     public void desaffecterBlocFromFoyer(Long blocId, Long foyerId) {
         Bloc bloc = blocRepository.findById(blocId).get();
-        Foyer foyer = foyerRepository.findById(foyerId).get();
-        foyer.getBlocs().remove(bloc);
-        foyerRepository.save(foyer);
+        // on set le fils à null → FK foyer_id sera NULL
+        bloc.setFoyer(null);
+        blocRepository.save(bloc);
     }
 }

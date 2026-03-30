@@ -23,7 +23,7 @@ public class Foyer {
     @OneToOne (mappedBy = "foyer")
     private Universite universite;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "foyer", cascade = CascadeType.ALL)
     private List<Bloc> blocs = new ArrayList<Bloc>();
 
 }
