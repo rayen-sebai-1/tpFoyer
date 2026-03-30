@@ -14,4 +14,10 @@ public interface IFoyerService {
     Foyer updateFoyer(Foyer foyer);
 
     List<Foyer> getAllFoyer();
+
+    Foyer addFoyerAndBloc(Foyer foyer);
+
+    void assignBlocToFoyer(Long blocId, Long foyerId);
+
+    void desaffecterBlocFromFoyer(Long blocId, Long foyerId);
 }

@@ -1,4 +1,5 @@
 package tn.esprit.tpfoyer.entity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -19,5 +20,10 @@ public class Reservation {
 
     @ManyToMany
     private Set<Etudiant> etudiantList = new HashSet<Etudiant>();
+
+    @ManyToOne
+    @JsonIgnore
+    @ToString.Exclude
+    private Chambre chambre;
 
 }

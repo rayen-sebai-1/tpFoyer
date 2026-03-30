@@ -31,4 +31,6 @@ public class BlocService implements IBlocService {
     public Bloc findBlocById(Long id) {
         return blocRepository.findById(id).get();
     }
+
+
 }

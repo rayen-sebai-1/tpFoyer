@@ -45,5 +45,23 @@ public class FoyerRestController {
         foyerService.deleteFoyer(foId);
     }
 
+    @PostMapping("/add-foyer-and-bloc")
+    public Foyer addFoyerAndBloc(@RequestBody Foyer foyer) {
+        return foyerService.addFoyerAndBloc(foyer);
+    }
+
+    @PutMapping("/assign-bloc-to-foyer/{bloc-id}/{foyer-id}")
+    public void affecterBlocAFoyer(
+            @PathVariable("bloc-id") Long blocId,
+            @PathVariable("foyer-id") Long foyerId) {
+        foyerService.assignBlocToFoyer(blocId, foyerId);
+    }
+
+    @PutMapping("/desaffecter-bloc-de-foyer/{bloc-id}/{foyer-id}")
+    public void desaffecterBlocDeFoyer(
+            @PathVariable("bloc-id") Long blocId,
+            @PathVariable("foyer-id") Long foyerId) {
+        foyerService.desaffecterBlocFromFoyer(blocId, foyerId);
+    }
 
 }

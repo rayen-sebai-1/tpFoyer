@@ -46,4 +46,22 @@ public class ChambreRestController {
     }
 
 
+    @PostMapping("/ajouter-chambre-et-reservation")
+    public Chambre addChambreAndReservation(@RequestBody Chambre chambre) {
+        return chambreService.addChambreAndReservation(chambre);
+    }
+
+    @PutMapping("/reserver-chambre/{reservation-id}/{chambre-id}")
+    public void reserverChambre(
+            @PathVariable("reservation-id") String reservationId,
+            @PathVariable("chambre-id") Long chambreId) {
+        chambreService.reserverChambre(reservationId, chambreId);
+    }
+
+    @PutMapping("/annuler-reservation/{reservation-id}")
+    public void annulerReservation(
+            @PathVariable("reservation-id") String reservationId) {
+        chambreService.annulerReservation(reservationId);
+    }
+
 }
