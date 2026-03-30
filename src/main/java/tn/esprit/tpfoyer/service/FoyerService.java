@@ -53,10 +53,10 @@ public class FoyerService implements IFoyerService{
         foyerRepository.save(foyer);
     }
 
+
     public void desaffecterBlocFromFoyer(Long blocId, Long foyerId) {
         Bloc bloc = blocRepository.findById(blocId).get();
         Foyer foyer = foyerRepository.findById(foyerId).get();
-
         foyer.getBlocs().remove(bloc);
         foyerRepository.save(foyer);
     }

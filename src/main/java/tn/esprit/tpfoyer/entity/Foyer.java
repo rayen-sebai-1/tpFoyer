@@ -1,7 +1,8 @@
 package tn.esprit.tpfoyer.entity;
 import jakarta.persistence.*;
 import lombok.*;
-
+import tn.esprit.tpfoyer.entity.Bloc;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -22,7 +23,7 @@ public class Foyer {
     @OneToOne (mappedBy = "foyer")
     private Universite universite;
 
-    @OneToMany(mappedBy = "foyer", cascade = CascadeType.ALL)
-    private Set<Bloc> blocs;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Bloc> blocs = new ArrayList<Bloc>();
 
 }
