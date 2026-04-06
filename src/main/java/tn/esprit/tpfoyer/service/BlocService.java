@@ -32,5 +32,22 @@ public class BlocService implements IBlocService {
         return blocRepository.findById(id).get();
     }
 
+    public List<Bloc> findByFoyerIsNull() {
+        return blocRepository.findByFoyerIsNull();
+    }
+
+    public List<Bloc> findByCapaciteBlocGreaterThan(Long capaciteBloc) {
+        return blocRepository.findByCapaciteBlocGreaterThan(capaciteBloc);
+    }
+
+    public List<Bloc> findByNomBlocStartingWith(String nomBloc) {
+        return blocRepository.findByNomBlocStartingWith(nomBloc);
+    }
+
+    public List<Bloc> findByNomBlocStartingWithAndCapaciteBlocGreaterThan(
+            String nomBloc, Long capaciteBloc) {
+        return blocRepository.findByNomBlocStartingWithAndCapaciteBlocGreaterThan(
+                nomBloc, capaciteBloc);
+    }
 
 }

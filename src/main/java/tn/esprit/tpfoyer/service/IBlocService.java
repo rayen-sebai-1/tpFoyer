@@ -12,4 +12,9 @@ public interface IBlocService {
     Bloc findBlocById(Long id);
 
     List<Bloc> getAllBlocs();
+
+    List<Bloc> findByFoyerIsNull();
+    List<Bloc> findByCapaciteBlocGreaterThan(Long capaciteBloc);
+    List<Bloc> findByNomBlocStartingWith(String nomBloc);
+    List<Bloc> findByNomBlocStartingWithAndCapaciteBlocGreaterThan(String nomBloc, Long capaciteBloc);
 }

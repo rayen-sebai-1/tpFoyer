@@ -8,6 +8,9 @@ import tn.esprit.tpfoyer.entity.Universite;
 import java.util.List;
 
 public interface BlocRepository extends JpaRepository<Bloc, Long> {
-
+    List<Bloc> findByFoyerIsNull();
+    List<Bloc> findByCapaciteBlocGreaterThan(Long capaciteBloc);
+    List<Bloc> findByNomBlocStartingWith(String nomBloc);
+    List<Bloc> findByNomBlocStartingWithAndCapaciteBlocGreaterThan(String nomBloc, Long capaciteBloc);
 
 }

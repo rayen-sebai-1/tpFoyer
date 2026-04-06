@@ -46,4 +46,27 @@ public class BlocRestController {
     }
 
 
+    @GetMapping("/blocs-sans-foyer")
+    public List<Bloc> getBlocsSansFoyer() {
+        return blocService.findByFoyerIsNull();
+    }
+
+    @GetMapping("/blocs-par-capacite/{capacite}")
+    public List<Bloc> getBlocsParCapacite(@PathVariable Long capacite) {
+        return blocService.findByCapaciteBlocGreaterThan(capacite);
+    }
+
+    @GetMapping("/blocs-par-nom/{nomBloc}")
+    public List<Bloc> getBlocsParNom(@PathVariable String nomBloc) {
+        return blocService.findByNomBlocStartingWith(nomBloc);
+    }
+
+    @GetMapping("/blocs-par-nom-et-capacite/{nomBloc}/{capacite}")
+    public List<Bloc> getBlocsParNomEtCapacite(
+            @PathVariable String nomBloc,
+            @PathVariable Long capacite) {
+        return blocService.findByNomBlocStartingWithAndCapaciteBlocGreaterThan(
+                nomBloc, capacite);
+    }
+
 }

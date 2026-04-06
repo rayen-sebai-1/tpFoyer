@@ -6,6 +6,7 @@ import tn.esprit.tpfoyer.entity.Chambre;
 import tn.esprit.tpfoyer.repository.ChambreRepository;
 import tn.esprit.tpfoyer.repository.ReservationRepository;
 import tn.esprit.tpfoyer.entity.Reservation;
+import tn.esprit.tpfoyer.entity.TypeChambre;
 
 import java.util.List;
 
@@ -57,5 +58,13 @@ public class ChambreService implements IChambreService{
         Reservation reservation = reservationRepository.findById(reservationId).get();
         reservation.setChambre(null);
         reservationRepository.save(reservation);
+    }
+
+    public List<Chambre> findByTypeC(TypeChambre typeC) {
+        return chambreRepository.findByTypeC(typeC);
+    }
+
+    public Chambre findByNumeroChambre(Long numeroChambre) {
+        return chambreRepository.findByNumeroChambre(numeroChambre);
     }
 }

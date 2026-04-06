@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import tn.esprit.tpfoyer.entity.Chambre;
 import tn.esprit.tpfoyer.service.IChambreService;
 import lombok.AllArgsConstructor;
+import tn.esprit.tpfoyer.entity.TypeChambre;
 
 @RestController
 @AllArgsConstructor
@@ -62,6 +63,16 @@ public class ChambreRestController {
     public void annulerReservation(
             @PathVariable("reservation-id") String reservationId) {
         chambreService.annulerReservation(reservationId);
+    }
+
+    @GetMapping("/chambres-par-type/{typeC}")
+    public List<Chambre> getChambresParType(@PathVariable TypeChambre typeC) {
+        return chambreService.findByTypeC(typeC);
+    }
+
+    @GetMapping("/chambre-par-numero/{numeroChambre}")
+    public Chambre getChambreParNumero(@PathVariable Long numeroChambre) {
+        return chambreService.findByNumeroChambre(numeroChambre);
     }
 
 }
