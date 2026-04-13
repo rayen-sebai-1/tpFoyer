@@ -1,6 +1,7 @@
 package tn.esprit.tpfoyer.service;
 
 import tn.esprit.tpfoyer.entity.Foyer;
+import tn.esprit.tpfoyer.entity.TypeChambre;
 
 import java.util.List;
 
@@ -20,4 +21,6 @@ public interface IFoyerService {
     void assignBlocToFoyer(Long blocId, Long foyerId);
 
     void desaffecterBlocFromFoyer(Long blocId, Long foyerId);
+
+    List<Foyer> findFoyersByTypeChambre(TypeChambre typeC);
 }

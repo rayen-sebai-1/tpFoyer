@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.data.repository.query.Param;
 import tn.esprit.tpfoyer.entity.Chambre;
+import tn.esprit.tpfoyer.entity.Reservation;
 import tn.esprit.tpfoyer.entity.TypeChambre;
 
 import java.util.List;
@@ -14,4 +15,10 @@ public interface ChambreRepository extends JpaRepository<Chambre, Long> {
 
     List<Chambre> findByTypeC(TypeChambre typeC);
     Chambre findByNumeroChambre(Long numeroChambre);
+
+    @Query("SELECT c.typeC, COUNT(c) FROM Chambre c GROUP BY c.typeC")
+    List<Object[]> countChambresByType();
+
+    @Query("SELECT c FROM Chambre c WHERE : reservation MEMBER OF c.reservation")
+    List<Chambre> findChambresByReservation(@Param("reservation") Reservation reservation);
 }

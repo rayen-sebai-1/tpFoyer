@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.tpfoyer.entity.Foyer;
+import tn.esprit.tpfoyer.entity.TypeChambre;
 import tn.esprit.tpfoyer.service.IFoyerService;
 import lombok.AllArgsConstructor;
 
@@ -62,6 +63,11 @@ public class FoyerRestController {
             @PathVariable("bloc-id") Long blocId,
             @PathVariable("foyer-id") Long foyerId) {
         foyerService.desaffecterBlocFromFoyer(blocId, foyerId);
+    }
+
+    @GetMapping("/foyers-par-type-chambre/{typeC}")
+    public List<Foyer> findFoyersByTypeChambre(@PathVariable TypeChambre typeC) {
+        return foyerService.findFoyersByTypeChambre(typeC);
     }
 
 }

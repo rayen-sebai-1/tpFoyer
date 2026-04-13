@@ -67,4 +67,12 @@ public class ChambreService implements IChambreService{
     public Chambre findByNumeroChambre(Long numeroChambre) {
         return chambreRepository.findByNumeroChambre(numeroChambre);
     }
+
+    public List<Object[]> countChambresByType() {
+        return chambreRepository.countChambresByType();
+    }
+
+    public List<Chambre> findChambresByReservation(Reservation reservation) {
+        return chambreRepository.findChambresByReservation(reservation);
+    }
 }

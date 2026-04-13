@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.tpfoyer.entity.Chambre;
+import tn.esprit.tpfoyer.entity.Reservation;
 import tn.esprit.tpfoyer.service.IChambreService;
 import lombok.AllArgsConstructor;
 import tn.esprit.tpfoyer.entity.TypeChambre;
@@ -73,6 +74,17 @@ public class ChambreRestController {
     @GetMapping("/chambre-par-numero/{numeroChambre}")
     public Chambre getChambreParNumero(@PathVariable Long numeroChambre) {
         return chambreService.findByNumeroChambre(numeroChambre);
+    }
+
+    @GetMapping("/count-by-type")
+    public List<Object[]> countChambresByType() {
+        return chambreService.countChambresByType();
+    }
+
+    @PostMapping("/chambres-par-reservation")
+    public List<Chambre> findChambresByReservation(
+            @RequestBody Reservation reservation) {
+        return chambreService.findChambresByReservation(reservation);
     }
 
 }

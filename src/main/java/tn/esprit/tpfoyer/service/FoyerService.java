@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import tn.esprit.tpfoyer.entity.Bloc;
 import tn.esprit.tpfoyer.entity.Foyer;
+import tn.esprit.tpfoyer.entity.TypeChambre;
 import tn.esprit.tpfoyer.repository.FoyerRepository;
 import tn.esprit.tpfoyer.repository.BlocRepository;
 
@@ -56,8 +57,11 @@ public class FoyerService implements IFoyerService{
 
     public void desaffecterBlocFromFoyer(Long blocId, Long foyerId) {
         Bloc bloc = blocRepository.findById(blocId).get();
-        // on set le fils à null → FK foyer_id sera NULL
         bloc.setFoyer(null);
         blocRepository.save(bloc);
+    }
+
+    public List<Foyer> findFoyersByTypeChambre(TypeChambre typeC) {
+        return foyerRepository.findFoyersByTypeChambre(typeC);
     }
 }
