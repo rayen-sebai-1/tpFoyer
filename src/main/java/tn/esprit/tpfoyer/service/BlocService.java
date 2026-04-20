@@ -1,11 +1,15 @@
 package tn.esprit.tpfoyer.service;
 
 import lombok.AllArgsConstructor;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import tn.esprit.tpfoyer.entity.Bloc;
 import tn.esprit.tpfoyer.repository.BlocRepository;
 
 import java.util.List;
+
+@EnableScheduling
 @Service
 @AllArgsConstructor
 public class BlocService implements IBlocService {
@@ -32,6 +36,8 @@ public class BlocService implements IBlocService {
         return blocRepository.findById(id).get();
     }
 
+
+    @Scheduled(cron = "0 15,45 8 * * MON")
     public List<Bloc> findByFoyerIsNull() {
         return blocRepository.findByFoyerIsNull();
     }

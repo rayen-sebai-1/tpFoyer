@@ -19,6 +19,5 @@ public interface ChambreRepository extends JpaRepository<Chambre, Long> {
     @Query("SELECT c.typeC, COUNT(c) FROM Chambre c GROUP BY c.typeC")
     List<Object[]> countChambresByType();
 
-    @Query("SELECT c FROM Chambre c WHERE : reservation MEMBER OF c.reservation")
-    List<Chambre> findChambresByReservation(@Param("reservation") Reservation reservation);
+          List<Chambre> findChambresByReservation(@Param("reservation") Reservation reservation);
 }

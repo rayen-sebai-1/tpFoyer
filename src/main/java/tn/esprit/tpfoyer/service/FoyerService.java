@@ -1,6 +1,10 @@
 package tn.esprit.tpfoyer.service;
 
 import lombok.AllArgsConstructor;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import tn.esprit.tpfoyer.entity.Bloc;
 import tn.esprit.tpfoyer.entity.Foyer;
@@ -10,11 +14,14 @@ import tn.esprit.tpfoyer.repository.BlocRepository;
 
 import java.util.List;
 
+
+@EnableScheduling
 @Service
 @AllArgsConstructor
 public class FoyerService implements IFoyerService{
 
 
+    private static final Log log = LogFactory.getLog(FoyerService.class);
     FoyerRepository foyerRepository;
     BlocRepository blocRepository;
 
@@ -38,8 +45,10 @@ public class FoyerService implements IFoyerService{
         return foyerRepository.save(foyer);
     }
 
+    @Scheduled(cron = "0/15 * 8-11 * * MON-FRI")
     @Override
     public List<Foyer> getAllFoyer() {
+        log.info("tache planifiée");
         return foyerRepository.findAll();
     }
 

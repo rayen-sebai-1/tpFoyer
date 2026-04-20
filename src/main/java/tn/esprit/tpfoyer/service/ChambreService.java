@@ -1,6 +1,8 @@
 package tn.esprit.tpfoyer.service;
 
 import lombok.AllArgsConstructor;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import tn.esprit.tpfoyer.entity.Chambre;
 import tn.esprit.tpfoyer.repository.ChambreRepository;
@@ -10,6 +12,7 @@ import tn.esprit.tpfoyer.entity.TypeChambre;
 
 import java.util.List;
 
+@EnableScheduling
 @Service
 @AllArgsConstructor
 public class ChambreService implements IChambreService{
@@ -68,6 +71,7 @@ public class ChambreService implements IChambreService{
         return chambreRepository.findByNumeroChambre(numeroChambre);
     }
 
+    @Scheduled(cron = "0 0/10 9-17 * * TUE-FRI")
     public List<Object[]> countChambresByType() {
         return chambreRepository.countChambresByType();
     }
